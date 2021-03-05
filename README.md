@@ -1,9 +1,9 @@
 # modular-happy
 
-(Quasi-)clone of [happy](https://github.com/simonmar/happy), transforming happy into a modularised version with three modules:
+(Quasi-)clone of [happy](https://github.com/simonmar/happy), transforming happy into a modularised version with three library modules:
 - `frontend` for parsing .y-files and turning them into a grammar IR.
 - `middleend` for generating action and goto tables for the grammar. Table optimisations could also be applied here.
-- `backend` for generating the code from the tables and the additional grammar specification.
+- `backend` for generating code from the tables and the additional grammar specification.
 
 This is a step in the direction of [this proposal](https://github.com/simonmar/happy/issues/167#issuecomment-780591344) which suggests exactly such a division and explains how it can be used to allow for easy adaption, modification of creation of current and future happy components.
 
