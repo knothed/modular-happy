@@ -1,6 +1,5 @@
 module Frontend (parseYFile, Grammar(..)) where
   
-import AbsSyn
 import Grammar
 import GHC.Base
 import Data.List
@@ -14,14 +13,16 @@ parseYFile :: String -> IO Grammar
 parseYFile fl_name = do
   file' <- readFile fl_name
   (file, _) <- possDelit (reverse fl_name) file'
-  case runP ourParser file 1 of {
-    Left err -> die (fl_name ++ ':' : err);
-    Right abssyn@(AbsSyn hd _ _ tl) ->
-      case {-# SCC "Mangler" #-} (mangler fl_name abssyn) of {
-        Left  s -> die (unlines s ++ "\n");
-        Right g -> return g
-      }
-  }
+
+  abssyn <- case runP ourParser file 1 of
+    Left err -> die (fl_name ++ ':' : err)
+    Right abssyn -> return abssyn
+
+  g <- case {-# SCC "Mangler" #-} (mangler fl_name abssyn) of
+    Left  s -> die (unlines s ++ "\n")
+    Right g -> return g
+
+  return g
   
 -- Delit
 possDelit :: String -> String -> IO (String,String)
