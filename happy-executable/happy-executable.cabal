@@ -1,0 +1,19 @@
+cabal-version:       >= 1.10
+
+name:                happy-executable
+version:             0.1.0.0
+synopsis:            The happy CLI, connecting frontend, middleend and backend together
+
+author:              David Knothe
+maintainer:          dknothe314@me.com
+
+build-type:          Simple
+
+executable happy-executable
+  main-is:             Main.hs
+  build-depends:       base >=4.8.2.0,
+                       frontend,
+                       middleend,
+                       backend
+  hs-source-dirs:      src
+  default-language:    Haskell2010

@@ -1,0 +1,16 @@
+cabal-version:       >= 1.10
+
+name:                frontend
+version:             0.1.0.0
+synopsis:            The baseline implementation of happy's frontend module (.y file parsing, grammar IR gen)
+
+author:              David Knothe
+maintainer:          dknothe314@me.com
+
+build-type:          Simple
+
+library
+  exposed-modules:     Frontend
+  build-depends:       base >=4.8.2.0
+  hs-source-dirs:      src
+  default-language:    Haskell2010
